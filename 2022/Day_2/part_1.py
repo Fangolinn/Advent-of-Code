@@ -26,7 +26,7 @@ def points(moves: list):
     return round_sum + values[moves[1]]
     
 
-with open("2022/2/input.txt", "r") as input_file:
+with open("2022\Day_2\input.txt", "r") as input_file:
     score = 0
     
     for line in input_file:
