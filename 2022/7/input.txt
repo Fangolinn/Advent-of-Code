@@ -72,7 +72,6 @@ dir sfpqf
 $ cd sfpqf
 $ ls
 329091 fgnljzg.zvv
-
 $ cd ..
 $ cd ..
 $ cd ..
@@ -83,7 +82,6 @@ $ ls
 dir crdbqlvs
 dir jnplb
 82659 pldz
-
 $ cd crdbqlvs
 $ ls
 87031 lbd

@@ -1,5 +1,6 @@
-# https://adventofcode.com/2022/day/1#part2
+# https://adventofcode.com/2022/day/1
 
+# Part 1
 with open("2022/1/input.txt", "r") as input_file:
     i = 0
     amounts = [0, 0]
@@ -13,6 +14,7 @@ with open("2022/1/input.txt", "r") as input_file:
         
 print(max(amounts))
 
+# Part 2
 sum = 0
 for i in range(3):
     tmp = max(amounts)

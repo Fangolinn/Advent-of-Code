@@ -1,8 +1,9 @@
+# https://adventofcode.com/2022/day/7
+
 from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
-
 
 @dataclass
 class Directory:
@@ -40,17 +41,16 @@ def find_dirs_of_max_size(parent_dir: Directory, max_size: int) -> list[Director
     if parent_dir.size == 0:
         return []
     
-    if parent_dir.size <= max_size:
-        return [parent_dir]
-
     dirs = []
+    if parent_dir.size <= max_size:
+        dirs.append(parent_dir)
+
     for dir in parent_dir.child_dirs:
         dirs.extend(find_dirs_of_max_size(dir, max_size))
 
     return dirs
 
-def main():
-    filesystem = Directory(name="/", parent_dir=None)
+def process_input(filesystem: Directory) -> None:
     current_dir = filesystem
     with open(Path(__file__).parent / "input.txt") as input_file:
         for line in input_file.readlines():
@@ -72,9 +72,44 @@ def main():
                 continue
 
             current_dir.files.append(File(name=line[1], size=int(line[0])))
+
+def find_dirs_of_min_size(parent_dir: Directory, max_size: int) -> list[Directory]:    
+    if parent_dir.size == 0:
+        return []
+    
+    dirs = []
+    if parent_dir.size >= max_size:
+        dirs.append(parent_dir)
+
+    for dir in parent_dir.child_dirs:
+        dirs.extend(find_dirs_of_min_size(dir, max_size))
+
+    return dirs
+
+def main_part1():
+    filesystem = Directory(name="/", parent_dir=None)
+    process_input(filesystem)
             
-    return([dir for dir in find_dirs_of_max_size(filesystem, 100000)])
+    return(sum([dir.size for dir in find_dirs_of_max_size(filesystem, 100000)]))
+
+
+def main_part2():
+    TOTAL_SIZE = 70000000
+    REQUIRED_SIZE = 30000000
+
+    filesystem = Directory(name="/", parent_dir=None)
+    process_input(filesystem)
+    
+    # How much space do we need to free?
+    free_space = TOTAL_SIZE - filesystem.size
+    missing_space = REQUIRED_SIZE - free_space
+
+    # Find dirs that are bigger than required space to free
+    dirs = find_dirs_of_min_size(filesystem, missing_space)
+
+    # Get the smallest one and return it's size
+    return sorted(dirs, key=lambda dir: dir.size)[0].size
 
 
 if __name__ == "__main__":
-    print(main())
+    print(main_part2())
