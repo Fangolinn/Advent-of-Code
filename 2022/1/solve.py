@@ -9,9 +9,9 @@ with open("2022/1/input.txt", "r") as input_file:
             amounts.append(0)
             i += 1
             continue
-        
+
         amounts[i] += int(line)
-        
+
 print(max(amounts))
 
 # Part 2
@@ -20,5 +20,5 @@ for i in range(3):
     tmp = max(amounts)
     amounts.pop(amounts.index(tmp))
     sum += tmp
-    
-print(sum) # correct out: 212489
+
+print(sum)  # correct out: 212489

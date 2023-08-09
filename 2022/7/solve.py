@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
+
 @dataclass
 class Directory:
     name: str
@@ -15,11 +16,11 @@ class Directory:
     @property
     def size(self) -> int:
         return self.files_size + self.child_dirs_size
-    
+
     @property
     def files_size(self) -> int:
         return sum([file.size for file in self.files])
-    
+
     @property
     def child_dirs_size(self) -> int:
         return sum([(dir.files_size + dir.child_dirs_size) for dir in self.child_dirs])
@@ -37,10 +38,11 @@ def change_dir(parent_dir: Directory, name: str) -> Directory:
 
     return [dir for dir in parent_dir.child_dirs if dir.name == name][0]
 
-def find_dirs_of_max_size(parent_dir: Directory, max_size: int) -> list[Directory]:    
+
+def find_dirs_of_max_size(parent_dir: Directory, max_size: int) -> list[Directory]:
     if parent_dir.size == 0:
         return []
-    
+
     dirs = []
     if parent_dir.size <= max_size:
         dirs.append(parent_dir)
@@ -50,6 +52,7 @@ def find_dirs_of_max_size(parent_dir: Directory, max_size: int) -> list[Director
 
     return dirs
 
+
 def process_input(filesystem: Directory) -> None:
     current_dir = filesystem
     with open(Path(__file__).parent / "input.txt") as input_file:
@@ -57,7 +60,7 @@ def process_input(filesystem: Directory) -> None:
             if line == "\n":
                 break
             line = line.split()
-            if line[0] == '$':
+            if line[0] == "$":
                 if line[1] == "cd":
                     if line[2] == "..":
                         current_dir = current_dir.parent_dir
@@ -68,15 +71,18 @@ def process_input(filesystem: Directory) -> None:
                 continue
 
             if line[0] == "dir":
-                current_dir.child_dirs.append(Directory(name=line[1], parent_dir=current_dir))
+                current_dir.child_dirs.append(
+                    Directory(name=line[1], parent_dir=current_dir)
+                )
                 continue
 
             current_dir.files.append(File(name=line[1], size=int(line[0])))
 
-def find_dirs_of_min_size(parent_dir: Directory, max_size: int) -> list[Directory]:    
+
+def find_dirs_of_min_size(parent_dir: Directory, max_size: int) -> list[Directory]:
     if parent_dir.size == 0:
         return []
-    
+
     dirs = []
     if parent_dir.size >= max_size:
         dirs.append(parent_dir)
@@ -86,11 +92,12 @@ def find_dirs_of_min_size(parent_dir: Directory, max_size: int) -> list[Director
 
     return dirs
 
+
 def main_part1():
     filesystem = Directory(name="/", parent_dir=None)
     process_input(filesystem)
-            
-    return(sum([dir.size for dir in find_dirs_of_max_size(filesystem, 100000)]))
+
+    return sum([dir.size for dir in find_dirs_of_max_size(filesystem, 100000)])
 
 
 def main_part2():
@@ -99,7 +106,7 @@ def main_part2():
 
     filesystem = Directory(name="/", parent_dir=None)
     process_input(filesystem)
-    
+
     # How much space do we need to free?
     free_space = TOTAL_SIZE - filesystem.size
     missing_space = REQUIRED_SIZE - free_space

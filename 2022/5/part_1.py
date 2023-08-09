@@ -26,9 +26,10 @@ for level in starting_stacks_parsed:
     for item, stack_no in zip(level, range(stacks_amount)):
         stacks[stack_no].append(item) if item != " " else None
 
+
 def move_item(command: str):
     """
-    Expected command format: 
+    Expected command format:
         'move n from x to y'
 
         n - amount of items to move
@@ -43,9 +44,10 @@ def move_item(command: str):
         item = stacks[start_stack - 1].pop()
         stacks[dest_stack - 1].append(item)
 
+
 for line in input_file.readlines():
     move_item(line)
-    
+
 print("".join([stack[-1] for stack in stacks]))
 
 input_file.close()

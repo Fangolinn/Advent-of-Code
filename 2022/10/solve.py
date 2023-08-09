@@ -5,10 +5,8 @@ INPUT_FILE = "input.txt"
 
 KEY_CYCLES = [20, 60, 100, 140, 180, 220]
 
-INSTRUCTION_LEN = {
-    "addx": 2,
-    "noop": 1
-}
+INSTRUCTION_LEN = {"addx": 2, "noop": 1}
+
 
 def main01(input_stream: TextIOWrapper):
     cycle_no = 0
@@ -19,7 +17,9 @@ def main01(input_stream: TextIOWrapper):
     for line in input_stream.readlines():
         instruction = line.strip().split(" ")
 
-        assert instruction[0] in INSTRUCTION_LEN.keys(), f"Actual instruction: {instruction[0]}"
+        assert (
+            instruction[0] in INSTRUCTION_LEN.keys()
+        ), f"Actual instruction: {instruction[0]}"
         instruction_len = INSTRUCTION_LEN[instruction[0]]
 
         for _ in range(instruction_len):
@@ -34,7 +34,6 @@ def main01(input_stream: TextIOWrapper):
 
     return signal_strengths_sum
 
-        
 
 def main02(input_stream: TextIOWrapper):
     cycle_no = 0
@@ -43,7 +42,9 @@ def main02(input_stream: TextIOWrapper):
     for line in input_stream.readlines():
         instruction = line.strip().split(" ")
 
-        assert instruction[0] in INSTRUCTION_LEN.keys(), f"Actual instruction: {instruction[0]}"
+        assert (
+            instruction[0] in INSTRUCTION_LEN.keys()
+        ), f"Actual instruction: {instruction[0]}"
         instruction_len = INSTRUCTION_LEN[instruction[0]]
 
         for _ in range(instruction_len):
@@ -60,7 +61,6 @@ def main02(input_stream: TextIOWrapper):
         if instruction[0] == "addx":
             x_val += int(instruction[1])
 
-        
 
 if __name__ == "__main__":
     with open(Path(__file__).parent / INPUT_FILE) as input_file:

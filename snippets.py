@@ -1,5 +1,7 @@
 from pathlib import Path
-open(Path(__file__).parent / "input.txt")
+
+INPUT_FILE = "input_ex.txt"
+open(Path(__file__).parent / INPUT_FILE)
 
 if __name__ == "__main__":
     ...
