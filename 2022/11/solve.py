@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from io import TextIOWrapper
 import math
-from pathlib import Path
 from copy import deepcopy
+from io import TextIOWrapper
+from pathlib import Path
 
 INPUT_FILE = "input.txt"
 open(Path(__file__).parent / INPUT_FILE)

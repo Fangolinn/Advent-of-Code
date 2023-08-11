@@ -1,3 +1,6 @@
+[tool.isort]
+profile = "black"
+
 [tool.poetry]
 name = "advent of code"
 version = "0.1.0"
@@ -9,6 +12,7 @@ readme = "README.md"
 python = "^3.11"
 numpy = "^1.25.1"
 ruff = "^0.0.277"
+pre-commit = "^3.3.3"
 
 
 [build-system]

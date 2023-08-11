@@ -1,8 +1,8 @@
 # https://adventofcode.com/2022/day/9
 
 from __future__ import annotations
-import copy
 
+import copy
 from dataclasses import dataclass
 from pathlib import Path
 
