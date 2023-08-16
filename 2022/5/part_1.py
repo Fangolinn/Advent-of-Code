@@ -1,6 +1,5 @@
 # https://adventofcode.com/2022/day/5
 
-import textwrap
 from pathlib import Path
 
 input_file = open(Path(__file__).parent / "input.txt")

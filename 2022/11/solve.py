@@ -28,7 +28,8 @@ class Monkey:
         # How the fuck to parse 'operation?'
         self.operation = monkey_def[1].removeprefix("Operation: new = ").split(" ")
 
-        # No support for other tests than "divisible by", make sure another option does not appear
+        # No support for other tests than "divisible by"
+        # Make sure another option does not appear
         assert "divisible by" in monkey_def[2].removeprefix("Test: ")
         self.divisible_test = int(monkey_def[2].rsplit(maxsplit=1)[-1])
 

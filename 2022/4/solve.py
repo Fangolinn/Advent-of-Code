@@ -25,11 +25,10 @@ def range_contains_the_other(range1: Range, range2: Range) -> bool:
     return False
 
 
-count: int = 0
-
-
 # Part 1
 def main1():
+    count: int = 0
+
     with open("./2022/Day_4/input.txt") as input_file:
         for line in input_file.readlines():
             range1, range2 = parse_line(line)
@@ -49,10 +48,9 @@ def ranges_overlap(range1: Range, range2: Range) -> bool:
     return False
 
 
-count: int = 0
-
-
 def main2():
+    count: int = 0
+
     with open("./2022/Day_4/input.txt") as input_file:
         for line in input_file.readlines():
             range1, range2 = parse_line(line)

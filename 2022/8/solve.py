@@ -51,7 +51,8 @@ def is_visible(forest: list[list[int]], row_no: int, column_no: int) -> bool:
 
 
 def main01():  # Part 1
-    # I will be using the naive method - for each 'tree' check if it's visible from any side
+    # I will be using the naive method,
+    # for each 'tree' check if it's visible from any side
     # More efficient method exists for sure
     forest = load_data()
 

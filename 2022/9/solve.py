@@ -20,7 +20,7 @@ class Position:
     def __eq__(self, other):
         if isinstance(other, Position):
             return self.x == other.x and self.y == other.y
-        raise NotImplemented
+        raise NotImplementedError
 
 
 def move(rope: list[Position], direction: str):
@@ -42,7 +42,8 @@ def move(rope: list[Position], direction: str):
     for node, parent in zip(rope[1:], rope[:-1]):
         if abs(parent.x - node.x) > 2:
             raise Exception(
-                "Something is fucked up, distance between parent and child node is more than 2."
+                "Something is fucked up,"
+                "distance between parent and child node is more than 2."
             )
 
         if abs(parent.y - node.y) == 2 and abs(parent.x - node.x) == 2:
