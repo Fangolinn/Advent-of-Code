@@ -13,7 +13,6 @@ repos:
     rev: 1.5.1
     hooks:
       - id: poetry-check
-      - id: poetry-lock
   - repo: https://github.com/floatingpurr/sync_with_poetry
     rev: 1.1.0
     hooks:
