@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
   - repo: https://github.com/psf/black
-    rev: c36e468794f9256d5e922c399240d49782ba04f1
+    rev: 23.7.0
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/isort
