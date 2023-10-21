@@ -10,10 +10,10 @@ SAND_ENTRY: Point = Point(500, 0)
 
 
 def parse_points(line: str) -> list[Point]:
-    line = line.strip("\n").split(" -> ")
+    line_split = line.strip("\n").split(" -> ")
 
     points = []
-    for point in line:
+    for point in line_split:
         point = point.split(",")
         points.append(Point(int(point[0]), int(point[1])))
 

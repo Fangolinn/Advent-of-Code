@@ -8,10 +8,10 @@ LIST_PATTERN = re.compile("\\[.*\\]")
 
 def parse_to_items(line: str) -> list[str]:
     line = line.strip("\n")
-    line = line.split(",")
+    line_split: list[str] = line.split(",")
     final_chars: list[str] = []
 
-    for item in line:
+    for item in line_split:
         brackets_before = [char for char in item if char == "["]
         brackets_after = [char for char in item if char == "]"]
 
