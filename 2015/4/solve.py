@@ -1,13 +1,11 @@
-import hashlib
 from hashlib import md5
 
 HASH_SECRET = "bgvyzdsv"
-md5 = hashlib.md5()
 
 x = 1
 while True:
-    hash = md5.update(str(x).encode("ASCII"))
-    if hash:
-        pass
+    if md5((HASH_SECRET + str(x)).encode()).hexdigest().startswith("000000"):
+        break
+    x += 1
 
-print(hash)
+print(x)
