@@ -47,3 +47,5 @@ if __name__ == "__main__":
 
     with open(Path(__file__).parent / INPUT_FILE) as input_file:
         valves = parse_input(input_file)
+
+    print(valves)
