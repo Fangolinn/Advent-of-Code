@@ -1,5 +1,7 @@
 .vscode/
 .pytest_cache/
 __pycache__
+
 input.txt
 input_ex.txt
+input_example.txt
